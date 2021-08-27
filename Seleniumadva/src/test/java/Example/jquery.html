@@ -1,0 +1,20 @@
+ <script type="text/javascript">     
+            $(document).ready(function() {                                      
+                $('#new_file_description').prop('maxlength','150');
+
+                $("#new_file_number").bind("input keyup paste", toggleSaveButtonEnabled);
+
+                function toggleSaveButtonEnabled() {
+                    if ($("#new_file_number").val() == null || $.trim($("#new_file_number").val()) == '') {
+                        var element = Tipped.findElement($("#button-save")[0]);
+                        Tipped.create("#button-save", "<strong id='FileNumberRequiredText'><direct:message key='file.number.required'/></strong>", {
+                          skin: 'custom',
+                          hook: 'rightmiddle'
+                        });
+                    } else {
+                        var element = Tipped.findElement($("#button-save")[0]);
+                        Tipped.remove(element);
+                    }
+                }
+            }
+        </script>
